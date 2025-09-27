@@ -2,7 +2,7 @@
 Name : 8a.c
 Author : Ishita Kar
 Description:Write a separate program using signal system call to catch the following signals.
-a. SIGSEGV
+b. SIGINT
 Date: 20th Sep, 2025.
 _______________________________________________________________________________
 */
@@ -10,26 +10,36 @@ _______________________________________________________________________________
 #include<stdio.h>
 #include<stdlib.h>
 #include<signal.h>
- 
-void sigsegv_handler(int sig)
+#include<unistd.h>
+void sigint_handler(int sig)
 {
-	printf("Caught signal %d (Segmentation Fault). Exiting gracefully.\n",sig);
-	exit(1);
+	printf("caught signal %d....\n",sig);
+	
 }
 
 int main()
 {
-	signal(SIGSEGV,sigsegv_handler);
-	
-	int *ptr=NULL;
-	*ptr=42; // segmentation fault
-	
-	return 0;
+signal(SIGINT,sigint_handler);
+printf("Program Running\n");
+while(1)
+
+{
+printf("Working\n");
+sleep(2);
 }
-/*_____________________________________________________________________________
+return 0;
+}
+
+/*___________________________________________________________________________
  OUTPUT
 
- Caught signal 11 (Segmentation Fault). Exiting gracefully.
+ Program Running
+Working
+Working
+Working
+^Ccaught signal 2....
+Working
+Working
+^Ccaught signal 2....
 _____________________________________________________________________________
-
-*
+*/
