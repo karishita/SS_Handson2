@@ -27,7 +27,7 @@ int main()
         int key_s,semid;
         key_s=ftok(".",'c');
         semid=semget(key_s,1,IPC_CREAT|0777);
-	arg.val=1;
+	arg.val=2;
 	semctl(semid,0,SETVAL,arg);
         int val=semctl(semid,0,GETVAL);
         printf("The semaphore ID is %d \n",semid);

@@ -1,5 +1,5 @@
 /*
-Name : 8a.c
+Name : 8b.c
 Author : Ishita Kar
 Description:Write a separate program using signal system call to catch the following signals.
 b. SIGINT
